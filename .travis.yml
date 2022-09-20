@@ -8,3 +8,15 @@ before_install:
 
 script: 
   - docker run -e CI=true tgoc222/dockerprac npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "dockerprac"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-us-east-1-452353948639"
+  bucket_path: "dockerprac"
+  on:
+    branch: master
+  access_key_id: $aws_key
+  secret_access_key: "$aws_secret"
