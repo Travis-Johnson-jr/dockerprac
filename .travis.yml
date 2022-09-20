@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t tgoc222/dockerprac -f Dockerfile.dev .
+
+script: 
+  - docker run -e CI=true tgoc222/dockerprac npm run test
